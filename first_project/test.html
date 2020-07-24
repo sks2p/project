@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            padding: 10px;
+            background-color: #ccccff;
+            background-image: url("../image/deco_bg_starbling.png");
+            background-size: 15%;
+        }
+
+        .pagebutton {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            box-shadow: 10 10 15px white;
+            margin-left: 15px;
+            transition: all 0.5s;
+            font-size: 1em;
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #mainimage {
+            margin: 15px;
+            width: 952px;
+            height: 369px;
+            border-style: none;
+            background-color: white;
+            overflow: hidden;
+        }
+
+        #imagetable {
+            transition: all 0.5s;
+            margin-left: 0px;
+        }
+
+        #pagebar {
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<script>
+    window.onload = () => init();
+    var pageButtons;
+    var imageTable;
+    var currentPage = 1;
+    var flipTimer;
+
+    function init() {
+        pageButtons = document.getElementsByClassName("pagebutton");
+        imageTable = document.getElementById("imagetable");
+
+        pageButtons[0].style.boxShadow = "10 10 15px skyblue";
+        pageButtons[0].style.backgroundColor = "skyblue";
+
+        flipTimer = setTimeout(autoFlip, 3000);
+    }
+
+    function autoFlip() {
+        currentPage += 1;
+        if (currentPage > pageButtons.length) currentPage = 1;
+        setPage(currentPage);
+    }
+
+    function setPage(num) {
+        clearTimeout(flipTimer);
+        for (var i = 0; i < pageButtons.length; i++) {
+
+            if (i != num - 1) {
+                pageButtons[i].style.boxShadow = "10 10 15px white";
+                pageButtons[i].style.backgroundColor = "white";
+            }
+
+            else {
+                pageButtons[i].style.boxShadow = "10 10 15px skyblue";
+                pageButtons[i].style.backgroundColor = "skyblue";
+            }
+
+            {
+                imageTable.style.marginLeft = -((num - 1) * 369) + "px";
+                currentPage = num;
+                flipTimer = setTimeout(autoFlip, 3000);
+            }
+        }
+    }
+</script>
+
+
+<body>
+    <center>
+        <br><br><br><br><br><br><br><br>
+        <div id="main">
+            <div id="pagebar">
+                <table>
+                    <tr>
+                        <td><div class="pagebutton" onclick="setpage(1)">○</div></td>
+                        <td><div class="pagebutton" onclick="setpage(2)">○</div></td>
+                        <td><div class="pagebutton" onclick="setpage(3)">○</div></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="mainimage">
+                <table id="imagetable">
+                    <tr>
+                        <td><img src="../image/H_artgallery.jpg" width="952" height="369"></td>
+                        <td><img src="../image/H_artgallery2.jpg" width="952" height="369"></td>
+                        <td><img src="../image/H_artgallery3.jpg" width="952" height="369"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </center>
+</body>
+</html>
