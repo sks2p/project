@@ -127,6 +127,22 @@ a {
 }
 
 
+<<<<<<< Updated upstream
+=======
+.side-menu li:hover {
+    background-color: black;
+    border-radius: 4px;
+}
+
+.side-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    align-items: center;
+    margin: 15%;
+    margin-left: 30%;
+}
+>>>>>>> Stashed changes
 
 .mycontent {
     margin-top: 50px;
@@ -137,8 +153,8 @@ a {
 .mycontent1 {
     width: 520px;
     float: left;
-    padding-top: 80px;
-    padding-left: 80px;
+    padding-top: 100px;
+    padding-left: 60px;
 }
 
 .mycontent1 h3 {
@@ -149,6 +165,7 @@ a {
     float: right;
     padding-right: 180px;
     margin: 30px 5px;
+    margin-left: 10%;
 }
 
 @media screen and (max-width: 700px) {
@@ -203,7 +220,7 @@ a {
     }
 }
 
-@media screen and (max-width: 1420px) {
+@media screen and (max-width: 1543px) {
     
     .navbar-menu {
         font-size: 30px;
@@ -221,14 +238,17 @@ a {
     }
 }
 
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1275px){
     .mycontent2{
         float: left;
+        padding-left: 0%;
+
     }
+    
 }
 
 
-@media screen and (max-width: 940px){
+@media screen and (max-width: 880px){
     .navbar-menu li{
         padding: 4px 12px;
     }
@@ -265,6 +285,7 @@ a {
         
         padding-left: 0px;
     }
+
 }
 
 @media screen and (max-width: 1800px){
