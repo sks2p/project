@@ -75,6 +75,18 @@
             android:layout_margin="10dp"
             android:id="@+id/input_text_view_2"/>
 
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:background="@drawable/baseball_number_ball"
+            android:textSize="70sp"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:layout_margin="10dp"
+            android:id="@+id/input_text_view_3"/>
+
 
     </LinearLayout>
 

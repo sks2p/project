@@ -20,10 +20,11 @@ public class MainActivity extends AppCompatActivity {
         baseball.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), baseballActivity.class);
+                Intent intent = new Intent(getApplicationContext(),
+                        baseballActivity.class);
+                startActivity(intent);
 
             }
         });
-
     }
 }

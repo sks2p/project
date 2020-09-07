@@ -21,11 +21,11 @@ import java.util.Random;
 
 public class baseballActivity extends AppCompatActivity {
 
-    int[] comNumbers = new int[3];
+    int[] comNumbers = new int[4];
     int inputTextCount = 0;
     int okCount = 1;
 
-    TextView[] inputTextView = new TextView[3];
+    TextView[] inputTextView = new TextView[4];
     Button[] numButton = new Button[10];
     ImageButton backSpaceButton;
     Button okButton;
@@ -83,15 +83,14 @@ public class baseballActivity extends AppCompatActivity {
     }
 
     private void okButtonClick() {
-        if(inputTextCount < 3){
+        if(inputTextCount < 4){
             Toast.makeText(getApplicationContext(), "숫자를 입력해 주세요", Toast.LENGTH_SHORT).show();
         }
         else{
-            int[] userNumbers = new int[3];
+            int[] userNumbers = new int[4];
             for (int i = 0; i < userNumbers.length; i++) {
                 userNumbers[i] = Integer.parseInt(inputTextView[i].getText().toString());
             }
-
             int[] countCheck = getCountCheck(comNumbers, userNumbers);
 
             Log.e("okButton" , "countCheck = S : " + countCheck[0] + "  B : " + countCheck[1]);
@@ -107,7 +106,7 @@ public class baseballActivity extends AppCompatActivity {
                 resultTextView.append("\n");
             }
 
-            if(countCheck[0]==3){
+            if(countCheck[0]==4){
                 okCount = 1;
                 comNumbers = getComNumbers();
             }
@@ -128,14 +127,14 @@ public class baseballActivity extends AppCompatActivity {
 
     private String getCountString(int[] userNumbers, int[] countCheck) {
         String resultCount;
-        if(countCheck[0] == 3){
+        if(countCheck[0] == 4){
             resultCount = okCount +  ".  [" + userNumbers[0] + " " + userNumbers[1] + " "
-                    + userNumbers[2] + "]  정답 - 축하드립니다. ";
+                    + userNumbers[2] + " "+ userNumbers[3] + "]  정답 - 축하드립니다. ";
             soundPool.play(buttonSound[2], 1, 1, 1, 0, 1);
         }
         else{
             resultCount = okCount + ".  [" + userNumbers[0] + " " + userNumbers[1] + " "
-                    + userNumbers[2] + "] S : " + countCheck[0] + "  B: " + countCheck[1];
+                    + userNumbers[2] + " "+ userNumbers[3] + "] S : " + countCheck[0] + "  B: " + countCheck[1];
             soundPool.play(buttonSound[0], 1, 1, 1, 0, 1);
         }
         return resultCount;
@@ -155,7 +154,7 @@ public class baseballActivity extends AppCompatActivity {
     }
 
     private void numButtonClick(View view) {
-        if(inputTextCount < 3) {
+        if(inputTextCount < 4) {
             Button button = findViewById(view.getId());
             inputTextView[inputTextCount].setText(button.getText().toString());
             button.setEnabled(false);
@@ -188,12 +187,11 @@ public class baseballActivity extends AppCompatActivity {
     }
 
     public int[] getComNumbers() {
-        int[] setComNumbers = new int[3];
+        int[] setComNumbers = new int[4];
 
         for (int i=0; i<setComNumbers.length; i++){
             setComNumbers[i] = new Random().nextInt(10);
-            int j;
-            for (j=0; j<i; j++);{
+            for (int j = 0; j<i; j++){
                 if (setComNumbers[i] == setComNumbers[j]) {
                     i--;
                     break;
@@ -201,7 +199,8 @@ public class baseballActivity extends AppCompatActivity {
             }
         }
 
-        Log.e("setComNumbers", "setComNumbers = " + setComNumbers[0] + "," +setComNumbers[1] + "," + setComNumbers[2] );
+        Log.e("setComNumbers", "setComNumbers = " + setComNumbers[0] + ","
+                + setComNumbers[1] + "," + setComNumbers[2] + "," + setComNumbers[3]);
         return setComNumbers;
     }
 
